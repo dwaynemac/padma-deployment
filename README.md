@@ -1,12 +1,10 @@
-# Padma::Assets
-
-TODO: Write a gem description
+# Padma deployment
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'padma-assets'
+    gem 'padma-deployment', groups: [:development]
 
 And then execute:
 
@@ -14,17 +12,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install padma-assets
+    $ gem install padma-deployment
 
 ## Usage
 
-In your application.css add:
+This gem will add 2 rake tasks:
 
-    *= require padma-assets
+    $ rake deploy:staging
 
-In your application.js add:
+    $ rake deploy:production
 
-    //= require padma-assets
+Currently behaviour is scripted for crm and contacts behaviour
 
 ## Contributing
 
