@@ -24,6 +24,10 @@ This gem will add 2 rake tasks:
 
 Currently behaviour is scripted for crm and contacts behaviour
 
+## TODO
+
+- configure deployment for each environment. to begin with options could simply be :heroku or :ec2
+
 ## Contributing
 
 1. Fork it
