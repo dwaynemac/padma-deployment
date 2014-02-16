@@ -11,6 +11,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "padma-deployment"
   gem.require_paths = ["lib"]
-  gem.version       = "0.0.1"
+  gem.version       = "0.1.0"
   gem.add_dependency "railties", ">= 3.1"
 end
