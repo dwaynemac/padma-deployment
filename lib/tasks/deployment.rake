@@ -10,31 +10,43 @@ namespace :deploy do
   desc "deploys to staging server"
   task :staging do
     puts "====> deploying to staging..."
-    `git checkout master`
-    `git pull`
-    rebase_to_master('staging')
-    deploy(:staging)
-    `git checkout master`
+    run 'git checkout master'
+    run 'git pull'
+    if rebase_to_master('staging')
+      deploy(:staging)
+    end
+    run 'git checkout master'
   end
 
   desc "deploys to production server"
   task :production do
     puts "====> deploying to production..."
-    `git checkout master`
-    `git pull`
-    rebase_to_master('production')
-    deploy(:production)
-    `git checkout master`
+    run 'git checkout master'
+    run 'git pull'
+    if rebase_to_master('production')
+      deploy(:production)
+    end
+    run 'git checkout master'
   end
 
 end
 
+def run(comand)
+  puts comand
+  `#{comand}`
+  if $?.success?
+    true
+  else
+    raise "'#{comand}' failed. finishing..."
+  end
+end
+
 def rebase_to_master(branch_name)
   if local_branch_exists?(branch_name)
-    `git checkout #{branch_name}`
-    `git rebase master`
+    run "git checkout #{branch_name}"
+    run 'git rebase master'
   else
-    `git checkout -b #{branch_name}`
+    run "git checkout -b #{branch_name}"
   end
 end
 
